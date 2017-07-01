@@ -9,7 +9,7 @@ FiLLS v0.1
 - 'Copy' or 'Move' (Move not yet available) files to 'Destination' folder
 
 ## Arguments:
-* Required - Source and Destination as second and last arguments
+Required - Source and Destination as second and last arguments
 example: python3 fills.py -r /Volumes/storage/source /Volumes/storage/destination
 
 Optional - Enter after script name in terminal python3 fills.py -args
