@@ -98,7 +98,6 @@ def sorting(src, dst, rec, move, log, todo, done):
 						print("Found an image:", this)
 					# Read Exif meta data
 					created = exifCreatedDate(src + os.sep + this, log)
-					print(created)
 					month = monthName(created[:2])
 					year = created[-4:]
 					tmpdst = dst + os.sep + year + os.sep + month
