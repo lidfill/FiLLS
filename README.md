@@ -1,5 +1,5 @@
 # FiLLS
-Python script to sort images
+Python script to sort images into folders based on year and month.
 
 FiLLS v0.1
 ## Summary
