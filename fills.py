@@ -1,47 +1,41 @@
-###
-#
-#	FiLLS v0.1
-#
-###
-#	Summary
-###
-#
-#	- Search through 'Source' folder (Recursive optional)
-#	- Find files with specified 'Extentions' (jpg, jpeg, png)
-#	- Read file 'Meta-data' for 'Sorting'
-#	- 'Copy' or 'Move' files to 'Destination' folder
-#
-#	Arguments:
-#		* Required - Source and Destination as second and last arguments
-#			example: python3 fills.py -r /Volumes/storage/source /Volumes/storage/destination
-#		Optional - Enter after script name in terminal python3 fills.py -args
-#			-r = Recursive (Default will only search within source folder)
-#			-l = Log to terminal (Default will not log actions to terminal)
-###
 from function import *
 
+# Setup varibles: todo and done lists
+todo = []
+done = []
+
+# Get system arguments
 arg = sys.argv
-
 rec = "-r" in arg
+# move = "-m" in arg
 log = "-l" in arg
+src = isValidDir(arg[-2])
+dst = isValidDir(arg[-1])
 
-try:
-	if checkDir(arg[-2]):
-		src = arg[-2]
-	else:
-		print("Source directory error")
-		exit()
-except:
-	print("Missing required arguments, make sure to include source and destination.")
-	exit()
+# Intro
+print("\n")
+print("-FiLLS STARTED-")
+print("\n")
+print("Opened path:", src)
 
-try:
-	if checkDir(arg[-1]):
-		dst = arg[-1]
-	else:
-		print("Destination directory error")
-		exit()
-except:
-	print("Missing required arguments, make sure to include source and destination.")
-	exit()
+# Sorting start
+todo = sorting(src, dst, rec, move, log, todo, done)
 
+# Add completed directory to done list
+done.append(src)
+
+# Run sorting into child directories if recursive option is True
+if rec == True:
+	for src in todo:
+		if src not in done:
+			if (log == True):
+				print("Opened path:", src)
+			todo = sorting(src, dst, rec, move, log, todo, done)
+			done.append(src)
+
+# Outro
+print("\n")
+print("Items have been sorted into:", dst)
+print("\n")
+print("-FiLLS FINISHED-")
+exit()
