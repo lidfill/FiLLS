@@ -15,5 +15,7 @@ example: python3 fills.py -r /Volumes/storage/source /Volumes/storage/destinatio
 Optional - Enter after script name in terminal python3 fills.py -args
 
 -r = Recursive (Default will only search items within source folder skipping sub folders)
+
 -m = Move (Default will copy the file) - not yet available
+
 -l = Log to terminal (Default will not log actions to terminal)
